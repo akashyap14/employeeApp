@@ -1,0 +1,18 @@
+.imageClass {
+    height: 200px;
+    width: 200px;
+}
+
+.verticalAlign{
+    display: flex;
+    align-items: center;
+}
+
+.card-footer{
+    display: flex;
+}
+
+#nxt{
+    position: absolute;
+    right : 140px;
+}

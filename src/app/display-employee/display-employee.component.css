@@ -1,0 +1,18 @@
+.imageClass {
+    height: 200px;
+    width: 200px;
+}
+
+.verticalAlign{
+    display: flex;
+    align-items: center;
+}
+
+.card-success{
+    background-color: greenyellow;
+}
+
+.btn{
+    
+    margin: 0 5px 0 5px;
+}

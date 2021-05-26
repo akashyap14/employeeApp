@@ -1,0 +1,136 @@
+
+<div class="text-center" *ngIf="spin">
+    <div class="spinner-border ab" role="status">
+      <span class="sr-only"></span>
+    </div>
+  </div>
+<form #employeeForm="ngForm" (ngSubmit)="saveEmployee(employeeForm.value)">
+<div class="card" >
+    <div class="card-header">
+      {{cardTitle}}
+    </div>
+    <div class="card-body">
+        
+        <div class="form-group" >
+            <label for="name"> Fullname</label>
+            <input  required type="text" id="name" name="name" ngModel #fullNameControl="ngModel"  class="form-control">
+                <div class="alert alert-danger" *ngIf="fullNameControl.invalid && fullNameControl?.touched"> Full name is required</div>
+        </div>
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="text" required email id="email"  name = "email" ngModel #emailControl="ngModel" class="form-control"> 
+            <div class="alert alert-danger" *ngIf="emailControl.invalid && emailControl?.touched">
+                    <div *ngIf="emailControl?.errors?.required"> Email is required </div>
+                    <div *ngIf="emailControl?.errors?.email"> Provide correct email address</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="phoneNumber">PhoneNumber</label>
+            <input type="text" [required]="contactPreference.value =='phone'" id="phoneNumber"  name = "phoneNumber" 
+                    ngModel #phoneNumberControl="ngModel" class="form-control"> 
+            <div class="alert alert-danger" *ngIf="phoneNumberControl.invalid && phoneNumberControl?.touched">
+                <div *ngIf="phoneNumberControl?.errors?.required"> phone number is required </div>
+        </div>
+        </div>
+        <div class="form-group">
+            Contact Preference
+            <div class="form-control">
+                <label > Phone
+                    <input type="radio" required ngModel #contactPreference="ngModel" name="contactPreference" value="phone">
+                </label>
+                <label > Email
+                    <input type="radio" required ngModel #contactPreference="ngModel" name="contactPreference" value="email">
+                </label>
+            </div>
+
+            <div class="alert alert-danger" *ngIf="contactPreference?.errors?.required && contactPreference.invalid && genderControl.touched">
+                <div > Contact Preference tick is required </div>
+            </div>
+        </div>
+        <div class="form-group">
+            Gender
+            <div class="form-control">
+                <label > Male
+                    <input type="radio" required ngModel #genderControl="ngModel" name="gender" value="male" >
+                </label>
+                <label > Female
+                    <input type="radio" required ngModel  #genderControl="ngModel" name="gender" value="female">
+                </label>
+            </div>
+
+            <div class="alert alert-danger" *ngIf="genderControl?.errors?.required && genderControl.invalid && genderControl.touched">
+                <div > Gender tick is required </div>
+        </div>
+            
+        </div>
+        <div class="form-group">
+            Current employee or not
+            <div class="form-control">
+                <label > IsActive
+                    <input type="checkbox" required ngModel #isActiveControl="ngModel" name="isActive" value="isActive" >
+                </label>
+            </div>
+            <div class="alert alert-danger" *ngIf="isActiveControl?.errors?.required && isActiveControl.invalid && isActiveControl.touched">
+                <div > IsActivve tick is required </div>
+            </div>
+        </div>
+        <div class="form-group">
+            Choose Department
+            <div class="form-control">
+                <label for="department" > Department </label>
+                    <select id="department" required  ngModel #departmentControl="ngModel" name="department"  >
+                        <option [ngValue]="null">Select a department</option>
+                        <option *ngFor = "let dept of departments" [value]="dept.id">{{dept.name}}</option>
+                    </select> 
+            </div>
+            <div class="alert alert-danger" *ngIf="departmentControl.errors?.required && departmentControl.invalid && departmentControl.touched ">
+                Please select a department
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="dateOfBirth">Date of Birth</label>
+            <input type="date" id="dateOfBirth" name = "dateOfBirth" ngModel class="form-control"> 
+        </div>
+
+        <div class="form-group">
+            <label for="photoPath">Photo path</label>
+            <input type="text" id="photoPath" #photoPath name = "photoPath" ngModel class="form-control"> 
+        </div>
+
+        <div class="form-group">
+            <button type="button" class="btn btn-primary" (click)="togglePreview()" >{{preview ? 'Hide' : 'Show'}} preview</button>
+        </div>
+
+
+        <div class="form-group">
+            <img [src]="photoPath.value" height ="200" width="200" alt="A image" *ngIf="preview">
+        </div>
+
+        <!-- <div class="form-group">
+            <label for="password">Password</label>
+            <input type="text" required  id="password"  name = "password" ngModel #passwordControl="ngModel" class="form-control"> 
+            <div class="alert alert-danger" *ngIf="passwordControl.invalid && passwordControl?.touched">
+                    <div *ngIf="passwordControl?.errors?.required"> Password is required </div>
+                    
+            </div>
+        </div> -->
+        <!-- <div class="form-group">
+            <label for="confirmPassword"> Confirm password</label>
+            <input type="text" required  id="confirmPassword" appConfirmEqualValidator="password"  name = "confirmPassword" ngModel #confirmPasswordControl="ngModel" class="form-control"> 
+            <div class="alert alert-danger" *ngIf="confirmPasswordControl.invalid && confirmPasswordControl?.touched">
+                    <div *ngIf="confirmPasswordControl?.errors?.notEqual"> Password does not match </div>
+                    <div *ngIf="passwordControl?.errors?.required"> Provide confirm password</div>
+            </div>
+        </div> -->
+
+        
+    </div>
+    
+
+    <div class="card-footer">
+        <input type="submit" class="btn btn-primary" [disabled]="employeeForm.invalid">
+    </div>
+</div>
+</form>
+
+{{employeeForm.value | json}}
