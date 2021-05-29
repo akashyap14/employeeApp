@@ -4,6 +4,7 @@ import { EmployeeCanactivateGuardService } from './employee-canactivate-guard.se
 import { NgModule, Component } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import {RouterModule,Routes} from '@angular/router';
+import {HttpClientModule} from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -68,7 +69,8 @@ var appRoutes : Routes = [
     AppRoutingModule,
     BsDatepickerModule.forRoot(),
     RouterModule.forRoot(appRoutes,{enableTracing : false}),
-    FormsModule 
+    FormsModule,
+    HttpClientModule
   ],
   providers: [CreateEmployeeCanDeactivateGuardService],
   bootstrap: [AppComponent]

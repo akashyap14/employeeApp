@@ -34,7 +34,7 @@ export class CreateEmployeeComponent implements OnInit {
   ngOnInit(): void {
     this._route.paramMap.subscribe( parameterMap =>{
         this.id = <number>(parameterMap.get('id') as unknown);
-        console.log(this._employeeService.getEmployeeById(this.id));
+        //console.log(this._employeeService.getEmployeeById(this.id));
         
     })
 
@@ -48,7 +48,12 @@ export class CreateEmployeeComponent implements OnInit {
     }
 
     setTimeout( ()=>{
-      this.createEmployeeForm.control.patchValue(this._employeeService.getEmployeeById(this.id));
+
+      this._employeeService.getEmployeeById(this.id)
+                .subscribe( (emp)=>{
+                  this.createEmployeeForm.control.patchValue(emp);
+                  console.log(emp);
+                })
       this.spin = false;
     },2000)
 
@@ -56,9 +61,26 @@ export class CreateEmployeeComponent implements OnInit {
 
   saveEmployee(emp : Employee ){
     emp.id = this.id;
-    this._employeeService.save(emp);
-    this.createEmployeeForm.resetForm();
-    this._router.navigate(['list']);
+
+    if(emp.id === null){
+      this._employeeService.save(emp)
+      .subscribe((data)=>{
+        console.log(data);
+        this.createEmployeeForm.resetForm();
+        this._router.navigate(['list']);
+      },
+      (error : any) => console.log(error));
+    }
+    else{
+      this._employeeService.updateEmployee(emp)
+          .subscribe(()=>{
+            this.createEmployeeForm.resetForm();
+            this._router.navigate(['list']);
+          },
+          (error : any) => console.log(error))
+    }
+    
+    
 
   }
 

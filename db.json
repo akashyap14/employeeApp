@@ -1,0 +1,52 @@
+{
+  "employees": [
+    {
+      "id": 1,
+      "name": "John",
+      "gender": "male",
+      "contactPreference": "email",
+      "email": "john@abc.com",
+      "phoneNumber": "7894561232",
+      "dateOfBirth": "1995-12-05",
+      "department": "3",
+      "isActive": "true",
+      "photoPath": "https://specials-images.forbesimg.com/imageserve/5d3d7a55f1176b000897d627/960x0.jpg?fit=scale"
+    },
+    {
+      "name": "Mark",
+      "email": "mark@abc.com",
+      "phoneNumber": 7894561232,
+      "contactPreference": "phone",
+      "gender": "female",
+      "isActive": true,
+      "department": "5",
+      "dateOfBirth": "1995-12-05",
+      "photoPath": "https://www.achievers.com/blog/wp-content/uploads/2020/05/05-27-20.jpg",
+      "id": 2
+    },
+    {
+      "id": 3,
+      "name": "Som",
+      "gender": "male",
+      "contactPreference": "phone",
+      "email": "Soma@abc.com",
+      "phoneNumber": 7894561232,
+      "dateOfBirth": "1995-12-05",
+      "department": "4",
+      "isActive": true,
+      "photoPath": "https://www.paychex.com/sites/default/files/styles/1200wide/public/image/2020-09/cares-act-employee-retention-credit.jpg?itok=9llOe7NR"
+    },
+    {
+      "name": "Ramswarup Ram 1 1",
+      "email": "koolv55@gmail.com",
+      "phoneNumber": "9566191278",
+      "contactPreference": "phone",
+      "gender": "male",
+      "isActive": true,
+      "department": "1",
+      "dateOfBirth": "1888-12-14",
+      "photoPath": "https://www.achievers.com/blog/wp-content/uploads/2020/05/05-27-20.jpg",
+      "id": 4
+    }
+  ]
+}
